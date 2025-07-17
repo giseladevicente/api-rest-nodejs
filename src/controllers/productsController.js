@@ -24,8 +24,15 @@ export const getProductById = async (req, res) => {
     }
 };
 
-export const createProduct = (req, res) => {
-  res.json("Crear nuevo producto");
+export const createProduct = async (req, res) => {
+    try {
+        const productData = req.body;
+        const NewProduct = await Model.createProduct(productData);
+        res.status(201).json(NewProduct);
+    } catch (error) {
+        console.error("Error al crear el producto:", error);
+        res.status(500).json({ error: "Error al crear el producto" });
+    }
 };
 
 export const updateProduct = (req, res) => {
