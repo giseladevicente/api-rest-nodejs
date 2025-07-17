@@ -1,5 +1,8 @@
-export const getAllProducts = (req, res) => {
-  res.json("Obtener todos los productos");
+import * as Model from '../models/Product.js'
+
+export const getAllProducts = async (req, res) => {
+  const products = await Model.getAllProducts();
+  res.json(products);
 };
 
 export const searchProducts = (req, res) => {
