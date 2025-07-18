@@ -1,5 +1,5 @@
 import { db } from '../db/firebase.js';
-import { collection, getDocs,doc, getDoc, addDoc, updateDoc} from 'firebase/firestore';
+import { collection, getDocs,doc, getDoc, addDoc, updateDoc, deleteDoc} from 'firebase/firestore';
 
 const productCollection = collection(db, "products");
 
@@ -48,5 +48,22 @@ export const updateProduct = async (id, updatedData) => {
   } catch (error) {
     console.error(error);
   }
+};
+
+export const deleteProduct = async (id) => {
+    try {
+        const docRef = doc(productCollection, id);
+        const snapshot = await getDoc(docRef);
+
+        if (!snapshot.exists()) {
+            return false; 
+        }
+
+        await deleteDoc(docRef);
+        return true;
+    } catch (error) {
+        console.error("Error en deleteProduct:", error);
+        return false;
+    }
 };
 
