@@ -35,8 +35,21 @@ export const createProduct = async (req, res) => {
     }
 };
 
-export const updateProduct = (req, res) => {
-  res.json(`Actualizar producto con ID: ${req.params.id}`);
+export const updateProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updatedData = req.body;
+    const updatedProduct = await Model.updateProduct(id, updatedData);
+
+    if (!updatedProduct) {
+      return res.status(404).json({ error: 'Producto no encontrado' });
+    }
+
+    res.json(updatedProduct);
+  } catch (error) {
+    console.error('Error al actualizar el producto:', error);
+    res.status(500).json({ error: 'Error al actualizar el producto' });
+  }
 };
 
 export const deleteProduct = (req, res) => {
