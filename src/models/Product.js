@@ -33,6 +33,7 @@ export const createProduct = async (productData) => {
     return { id: docRef.id, ...productData };
   } catch (error) {
     console.error(error);
+    return null;
   }
 };
 
@@ -44,7 +45,10 @@ export const updateProduct = async (id, updatedData) => {
     if (!snapshot.exists()) return null;
 
     await updateDoc(docRef, updatedData);
-    return { id, ...updatedData };
+
+    const updatedSnapshot = await getDoc(docRef);
+
+    return { id, ...updatedSnapshot.data() };
   } catch (error) {
     console.error(error);
   }

@@ -5,10 +5,6 @@ export const getAllProducts = async (req, res) => {
   res.json(products);
 };
 
-export const searchProducts = (req, res) => {
-  res.json("Buscar productos");
-};
-
 export const getProductById = async (req, res) => {
     try {        
         const { id } = req.params;   
@@ -27,6 +23,10 @@ export const getProductById = async (req, res) => {
 export const createProduct = async (req, res) => {
     try {
         const productData = req.body;
+
+      if (!productData.name || !productData.price || !Array.isArray(productData.categories) || productData.categories.length === 0) {
+        return res.status(400).json({ error: 'Faltan campos obligatorios (name, price, categories)' });
+      }
         const NewProduct = await Model.createProduct(productData);
         res.status(201).json(NewProduct);
     } catch (error) {
@@ -39,6 +39,11 @@ export const updateProduct = async (req, res) => {
   try {
     const { id } = req.params;
     const updatedData = req.body;
+    
+    if (Object.keys(updatedData).length === 0) {
+      return res.status(400).json({ error: "No se enviaron datos para actualizar" });
+    }
+    
     const updatedProduct = await Model.updateProduct(id, updatedData);
 
     if (!updatedProduct) {
