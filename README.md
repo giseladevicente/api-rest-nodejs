@@ -17,6 +17,7 @@ Proyecto Final de Talento Tech: API REST para gestión de productos desarrollada
   - [Actualizar un producto](#actualizar-un-producto)
   - [Eliminar un producto](#eliminar-un-producto)
 - [Códigos de estado](#códigos-de-estado)
+- [Vercel Deployment](#vercel-deployment)
 
 
 
@@ -337,6 +338,8 @@ Unauthorized
 - `404` - Not Found: Recurso no encontrado
 - `500` - Internal Server Error
 
+### Vercel Deployment:
+[Vercel Deployment](api-rest-nodejs-nu.vercel.app)
 
 
 
