@@ -13,7 +13,7 @@ app.use("/api/auth", authRouter);
 
 
 app.get('/', (req, res) => {
-    res.json({ message: "Bienvenido a API REST Firestore - Proyecto Final Talento Tech"})
+    res.json({ message: "Bienvenido a API REST de Productos"})
 })
 
 app.use((req,res,next) => {

@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Proyecto Final de Talento Tech: API REST para gestión de productos desarrollada con **Node.js**, **Express**, **Firebase Firestore** y autenticación con **JWT**.
+API REST para gestión de productos desarrollada con **Node.js**, **Express**, **Firebase Firestore** y autenticación con **JWT**.
 
 ## Índice
 
@@ -45,6 +45,11 @@ Luego editar el archivo `.env` con los valores correspondientes para tu entorno.
 npm run dev
 ```
 
+⚠️ Nota  
+Este proyecto es una **API REST** y no cuenta con interfaz gráfica.  
+Los endpoints **POST, PUT y DELETE** deben probarse utilizando herramientas como **Postman** o **Thunder Client**.
+
+
 ## Documentación de la API
 
 ### Estructura del proyecto
@@ -73,7 +78,7 @@ src/
 - JWT (jsonwebtoken)
 - CORS
 - dotenv
-- Postman: Para probar los endpoints con token y envío de body
+- Postman / Thunder Client (testing de endpoints)
 
 ### Endpoints
 
@@ -339,7 +344,9 @@ Unauthorized
 - `500` - Internal Server Error
 
 ### Vercel Deployment:
-[Vercel Deployment](api-rest-nodejs-nu.vercel.app)
+API desplegada en Vercel:
+👉 https://api-rest-nodejs-nu.vercel.app
+
 
 
 
